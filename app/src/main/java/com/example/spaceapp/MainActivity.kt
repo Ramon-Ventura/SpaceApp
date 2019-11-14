@@ -62,7 +62,9 @@ class MainActivity : AppCompatActivity() {
 
         Picasso.get()
             .load("$urlImagen")
+            .resize(500,500)
             .into(imageViewApod)
+
 
         Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
     }
