@@ -10,6 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.spaceapp.api_apod.ApiResponseApod
 import com.google.gson.Gson
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -53,7 +54,16 @@ class MainActivity : AppCompatActivity() {
     private fun jsonToObject(response: String){
         val gson= Gson()
         val apiResponse = gson.fromJson(response, ApiResponseApod::class.java)
+        val urlImagen = apiResponse.hdurl
         textViewTitle.text=apiResponse.title
+        textViewExplanation.text = apiResponse.explanation
+        textViewCopy.text=apiResponse.copyright
+        textViewDate.text=apiResponse.date
+
+        Picasso.get()
+            .load("$urlImagen")
+            .into(imageViewApod)
+
         Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
     }
 

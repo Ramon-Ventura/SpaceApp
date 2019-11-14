@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">SpaceApp</string>
+
     <string name="text_view_title">%1$d</string>
+    <string name="text_view_explanation">%1$d</string>
+    <string name="text_view_date">%1$d</string>
+    <string name="text_view_copy">%1$d</string>
 
 </resources>
