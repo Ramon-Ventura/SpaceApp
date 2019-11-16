@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
         textViewDate.text=apiResponse.date
 
         Picasso.get()
-            .load("$urlImagen")
+            .load(urlImagen)
             .resize(500,500)
             .into(imageViewApod)
 

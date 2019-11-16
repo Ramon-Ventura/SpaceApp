@@ -1,95 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/text_view_title"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/btm_nav"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/WhiteColor"
+        app:menu="@menu/bottom_nav"
 
-    <ImageView
-        android:id="@+id/imageViewApod"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="24dp"
-        android:contentDescription="@string/image_view_apod"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-        tools:srcCompat="@tools:sample/avatars" />
+        />
 
 
-
-    <TextView
-        android:id="@+id/textViewCopy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/text_view_copy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/text_view_date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewApod" />
-
-    <ScrollView
-        android:id="@+id/SCROLLER_ID"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        android:fillViewport="true"
-        android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/textViewCopy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDate">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="710dp"
+        android:layout_above="@+id/btm_nav"
+        android:layout_marginBottom="22dp">
 
         <TextView
-            android:id="@+id/textViewExplanation"
-            android:layout_width="fill_parent"
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/text_view_explanation"
-            />
+            android:layout_marginTop="32dp"
+            android:text="@string/text_view_title"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!--
+        <ImageView
+            android:id="@+id/imageViewApod"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="24dp"
+            android:contentDescription="@string/image_view_apod"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+            tools:srcCompat="@tools:sample/avatars" />
+
+
         <TextView
-            android:id="@+id/textViewExplanation"
+            android:id="@+id/textViewCopy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/text_view_copy"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/text_view_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewApod" />
+
+        <ScrollView
+            android:id="@+id/SCROLLER_ID"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:layout_marginBottom="16dp"
-            android:text="@string/text_view_explanation"
+            android:layout_marginBottom="24dp"
+            android:fillViewport="true"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toTopOf="@+id/textViewCopy"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
-            -->
-    </ScrollView>
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate">
+
+            <TextView
+                android:id="@+id/textViewExplanation"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_view_explanation" />
+
+            <!--
+            <TextView
+                android:id="@+id/textViewExplanation"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/text_view_explanation"
+                app:layout_constraintBottom_toTopOf="@+id/textViewCopy"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDate" />
+                -->
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
