@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/btm_nav"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colo"
+        app:itemBackground="@color/colorAccent"
         app:menu="@menu/bottom_nav"
-
-
+        app:itemIconTint="@drawable/item_selected"
+        app:itemTextColor="@drawable/item_selected"
         />
 
     <FrameLayout

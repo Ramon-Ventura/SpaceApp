@@ -10,31 +10,70 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.spaceapp.api_apod.ApiResponseApod
-//import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.spaceapp.api_solarsystem.ApiResponseSolarSystem
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 
 import kotlinx.android.synthetic.main.fragment_apod.*
+import kotlinx.android.synthetic.main.fragment_solar_system.*
 
 class MainActivity : AppCompatActivity() {
 
 
 
     lateinit var apodFragment: ApodFragment
+    lateinit var solarSystemFragment: SolarSystemFragment
+
+    var isSolarSystem : Boolean = false
+    var isApod : Boolean = false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        //val bottomNavigation: BottomNavigationView = findViewById(R.id.btm_nav)
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.btm_nav)
         this.apodFragment = ApodFragment()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.frame_layout,apodFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
+        restoreFragments()
+        isApod=true
         verifyAndConnect("https://api.nasa.gov/planetary/apod?api_key=mbXbdV3EpYydttCB6qbySduGMtYiS3TNyb0JagqH")
+
+        //Listener for the bottom navigation menu
+        bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.Apod->{
+                    apodFragment = ApodFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.frame_layout,apodFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                    restoreFragments()
+                    isApod=true
+                    verifyAndConnect("https://api.nasa.gov/planetary/apod?api_key=mbXbdV3EpYydttCB6qbySduGMtYiS3TNyb0JagqH")
+                }
+                R.id.SolarSystem ->{
+                    solarSystemFragment = SolarSystemFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.frame_layout,solarSystemFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                    restoreFragments()
+                    isSolarSystem=true
+                    verifyAndConnect("https://api.le-systeme-solaire.net/rest/bodies/earth")
+                }
+            }
+
+            true
+        }
     }
 
     //Verify an existing connection
@@ -54,13 +93,20 @@ class MainActivity : AppCompatActivity() {
             Response.Listener<String> { response ->
                 Log.d("HTTPVolley",  response)
                 Toast.makeText(this, "Connection Success", Toast.LENGTH_LONG).show()
-                jsonToObject(response)
+                if(isSolarSystem){
+                    jsonToObjectSolarSystem(response)
+                }
+                else if(isApod){
+                    jsonToObject(response)
+                }
+
             },
             Response.ErrorListener {
                 Log.d("HTTPVolley", "Error en la URL $url")
                 Toast.makeText(this, "¡An error has occurred!", Toast.LENGTH_SHORT).show()
             })
         queue.add(stringRequest)
+
     }
 
     private fun jsonToObject(response: String){
@@ -80,4 +126,19 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
     }
 
+    private fun jsonToObjectSolarSystem(response: String){
+        val gson= Gson()
+        val apiResponse = gson.fromJson(response, ApiResponseSolarSystem::class.java)
+        solarSystemFragment.textViewPlanetName.text=apiResponse.englishName
+        Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
+    }
+
+    fun restoreFragments(){
+        isApod=false
+        isSolarSystem=false
+    }
+
+    fun hola(){
+        solarSystemFragment.textViewPlanetName.text="hola"
+    }
 }

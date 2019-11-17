@@ -12,5 +12,7 @@ class Network {
 
             return networkInfo != null && networkInfo.isConnected
         }
+
+
     }
 }
