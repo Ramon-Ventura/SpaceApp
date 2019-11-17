@@ -11,11 +11,32 @@
     <string name="edit_text_planet_name">Type Planet Name</string>
     <string name="btn_search_planet">Search</string>
     <string name="text_view_planet_name">%1$d</string>
+
     <string name="text_view_mass">MASS (kg)</string>
     <string name="text_view_mass_value">Mass Value</string>
     <string name="text_view_mass_exponent">Mass Exponent</string>
-
     <string name="text_view_mass_value_value">%1$d</string>
     <string name="text_view_mass_exponent_value">%1$d</string>
+
+    <string name="text_view_volume">VOLUME (km^3)</string>
+    <string name="text_view_volume_value">Volume Value</string>
+    <string name="text_view_volume_exponent">Volume Exponent</string>
+    <string name="text_view_volume_value_value">%1$d</string>
+    <string name="text_view_volume_exponent_value">%1$d</string>
+
+
+    <string name="text_view_density">Density</string>
+    <string name="text_view_density_value">%1$.4f g.cm^3</string>
+    <string name="text_view_gravity">Gravity</string>
+    <string name="text_view_gravity_value">%1$.3f m.s^2</string>
+    <string name="text_view_equatorial_radius">Equatorial Radius</string>
+    <string name="text_view_equatorial_radius_value">%1$.4f kms</string>
+    <string name="text_view_polar_radius">Polar Radius</string>
+    <string name="text_view_polar_radius_value">%1$.4f kms</string>
+    <string name="text_view_sidereal_orbit">Sidereal Orbit</string>
+    <string name="text_view_sidereal_orbit_value">%1$.4f days</string>
+    <string name="text_view_sidereal_rotation">Sidereal Rotation</string>
+    <string name="text_view_sidereal_rotation_value">%1$.4f hours</string>
+
 
 </resources>

@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Verify an existing connection
-    fun verifyAndConnect(url:String = "oim"){
+    fun verifyAndConnect(url:String){
         if(Network.verifyConection(this)){
             httpVolley(url)
         }else{
@@ -132,6 +132,16 @@ class MainActivity : AppCompatActivity() {
         solarSystemFragment.textViewPlanetName.text=apiResponse.englishName
         solarSystemFragment.textViewMassValue.text=apiResponse.mass.massValue.toString()
         solarSystemFragment.textViewMassExponent.text=apiResponse.mass.massExponent.toString()
+        solarSystemFragment.textViewVolumeValue.text=apiResponse.vol.volValue.toString()
+        solarSystemFragment.textViewVolumeExponent.text=apiResponse.vol.volExponent.toString()
+
+         solarSystemFragment.textViewDensityValue.text=getString(R.string.text_view_density_value,apiResponse.density)
+        solarSystemFragment.textViewGravityValue.text=getString(R.string.text_view_gravity_value,apiResponse.gravity)
+        solarSystemFragment.textViewEquatorialRadiusValue.text=getString(R.string.text_view_equatorial_radius_value,apiResponse.equaRadius)
+        solarSystemFragment.textViewPolarRadiusValue.text=getString(R.string.text_view_polar_radius_value,apiResponse.polarRadius)
+        solarSystemFragment.textViewSiderealOrbitValue.text=getString(R.string.text_view_sidereal_orbit_value,apiResponse.sideralOrbit)
+        solarSystemFragment.textViewSiderealRotationValue.text=getString(R.string.text_view_sidereal_rotation_value,apiResponse.sideralRotation)
+
 
         Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
     }
