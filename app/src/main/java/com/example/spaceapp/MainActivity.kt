@@ -18,12 +18,14 @@ import kotlinx.android.synthetic.main.fragment_apod.*
 
 class MainActivity : AppCompatActivity() {
 
+
+
     lateinit var apodFragment: ApodFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        verifyAndConnect("https://api.nasa.gov/planetary/apod?api_key=mbXbdV3EpYydttCB6qbySduGMtYiS3TNyb0JagqH")
+
 
         //val bottomNavigation: BottomNavigationView = findViewById(R.id.btm_nav)
         this.apodFragment = ApodFragment()
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.frame_layout,apodFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
+        verifyAndConnect("https://api.nasa.gov/planetary/apod?api_key=mbXbdV3EpYydttCB6qbySduGMtYiS3TNyb0JagqH")
     }
 
     //Verify an existing connection
