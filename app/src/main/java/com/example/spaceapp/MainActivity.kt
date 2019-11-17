@@ -130,15 +130,15 @@ class MainActivity : AppCompatActivity() {
         val gson= Gson()
         val apiResponse = gson.fromJson(response, ApiResponseSolarSystem::class.java)
         solarSystemFragment.textViewPlanetName.text=apiResponse.englishName
+        solarSystemFragment.textViewMassValue.text=apiResponse.mass.massValue.toString()
+        solarSystemFragment.textViewMassExponent.text=apiResponse.mass.massExponent.toString()
+
         Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
     }
 
-    fun restoreFragments(){
+    private fun restoreFragments(){
         isApod=false
         isSolarSystem=false
     }
 
-    fun hola(){
-        solarSystemFragment.textViewPlanetName.text="hola"
-    }
 }
