@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_solar_system.*
 import kotlinx.android.synthetic.main.fragment_solar_system.view.*
-import kotlinx.android.synthetic.main.fragment_solar_system.view.editTextPlanet
+
 
 /**
  * A simple [Fragment] subclass.

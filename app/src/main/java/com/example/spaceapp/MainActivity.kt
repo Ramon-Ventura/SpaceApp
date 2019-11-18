@@ -23,11 +23,12 @@ import kotlinx.android.synthetic.main.fragment_solar_system.*
 class MainActivity : AppCompatActivity() {
 
 
-
+    //Objects for fragments
     lateinit var apodFragment: ApodFragment
     lateinit var solarSystemFragment: SolarSystemFragment
     lateinit var marsRoverFragment: MarsRoverFragment
 
+    //Verify which fragment is active
     var isSolarSystem : Boolean = false
     var isApod : Boolean = false
     var isMarsRover : Boolean = false
@@ -51,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         //Listener for the bottom navigation menu
         bottomNavigation.setOnNavigationItemSelectedListener { item ->
+            //When user tap apod option
             when (item.itemId){
                 R.id.Apod->{
                     apodFragment = ApodFragment()
@@ -63,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                     isApod=true
                     verifyAndConnect("https://api.nasa.gov/planetary/apod?api_key=mbXbdV3EpYydttCB6qbySduGMtYiS3TNyb0JagqH")
                 }
+                //When user tap SolarSystem option
                 R.id.SolarSystem ->{
                     solarSystemFragment = SolarSystemFragment()
                     supportFragmentManager
@@ -74,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     isSolarSystem=true
                     verifyAndConnect("https://api.le-systeme-solaire.net/rest/bodies/earth")
                 }
-
+                //When user tap Mars Rover option
                 R.id.MarsRover ->{
                     marsRoverFragment = MarsRoverFragment()
                     supportFragmentManager

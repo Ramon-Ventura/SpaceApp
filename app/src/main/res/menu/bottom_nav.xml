@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/Apod"
-        android:title="Apod"
+        android:title="@string/apod"
         android:icon="@drawable/ic_observatory"
         />
     <item
         android:id="@+id/SolarSystem"
-        android:title="Solar S."
+        android:title="@string/solar_s"
         android:icon="@drawable/ic_sun"
         />
     <item
         android:id="@+id/MarsRover"
-        android:title="Rovers"
+        android:title="@string/rovers"
         android:icon="@drawable/ic_mars"
         />
 
