@@ -29,5 +29,4 @@ class SolarSystemFragment : Fragment() {
 
     }
 
-
 }

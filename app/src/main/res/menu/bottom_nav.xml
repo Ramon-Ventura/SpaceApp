@@ -11,9 +11,9 @@
         android:icon="@drawable/ic_sun"
         />
     <item
-        android:id="@+id/Neos"
-        android:title="Neos"
-        android:icon="@drawable/ic_action_home"
+        android:id="@+id/MarsRover"
+        android:title="Rovers"
+        android:icon="@drawable/ic_mars"
         />
 
 </menu>

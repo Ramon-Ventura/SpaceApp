@@ -10,12 +10,14 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.spaceapp.api_apod.ApiResponseApod
+import com.example.spaceapp.api_mars_rovers.ApiResponseMarsRover
 import com.example.spaceapp.api_solarsystem.ApiResponseSolarSystem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 
 import kotlinx.android.synthetic.main.fragment_apod.*
+import kotlinx.android.synthetic.main.fragment_mars_rover.*
 import kotlinx.android.synthetic.main.fragment_solar_system.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,9 +26,11 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var apodFragment: ApodFragment
     lateinit var solarSystemFragment: SolarSystemFragment
+    lateinit var marsRoverFragment: MarsRoverFragment
 
     var isSolarSystem : Boolean = false
     var isApod : Boolean = false
+    var isMarsRover : Boolean = false
 
 
 
@@ -70,6 +74,18 @@ class MainActivity : AppCompatActivity() {
                     isSolarSystem=true
                     verifyAndConnect("https://api.le-systeme-solaire.net/rest/bodies/earth")
                 }
+
+                R.id.MarsRover ->{
+                    marsRoverFragment = MarsRoverFragment()
+                    supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.frame_layout,marsRoverFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit()
+                    restoreFragments()
+                    isMarsRover=true
+                    verifyAndConnect("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2018-6-3&camera=fhaz&api_key=mbXbdV3EpYydttCB6qbySduGMtYiS3TNyb0JagqH")
+                }
             }
 
             true
@@ -99,6 +115,9 @@ class MainActivity : AppCompatActivity() {
                 else if(isApod){
                     jsonToObject(response)
                 }
+                else if(isMarsRover){
+                    jsonToObjectoMarsRover(response)
+                }
 
             },
             Response.ErrorListener {
@@ -113,7 +132,7 @@ class MainActivity : AppCompatActivity() {
         val gson= Gson()
         val apiResponse = gson.fromJson(response, ApiResponseApod::class.java)
         val urlImagen = apiResponse.hdurl
-        apodFragment.textViewTitle.text=apiResponse.title
+        apodFragment.textViewTitle.text=getString(R.string.text_view_title,apiResponse.title)
         apodFragment.textViewExplanation.text = apiResponse.explanation
         apodFragment.textViewCopy.text=apiResponse.copyright
         apodFragment.textViewDate.text=apiResponse.date
@@ -146,9 +165,31 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
     }
 
+    private fun jsonToObjectoMarsRover(response: String){
+        val gson= Gson()
+        val apiResponse = gson.fromJson(response, ApiResponseMarsRover::class.java)
+        marsRoverFragment.textViewEarthDateValue.text =  apiResponse.photos.first().earthDate
+        marsRoverFragment.textViewCameraTypeValue.text = apiResponse.photos.first().camera.fullName
+        marsRoverFragment.textViewLandingDateValue.text=apiResponse.photos.first().rover.landingDate
+        marsRoverFragment.textViewLaunchDateValue.text=apiResponse.photos.first().rover.launchDate
+        marsRoverFragment.textViewMaxDateValue.text=apiResponse.photos.first().rover.maxDate
+        marsRoverFragment.textViewStatusValue.text=apiResponse.photos.first().rover.status
+        marsRoverFragment.textViewPhotosValue.text=apiResponse.photos.first().rover.totalPhotos.toString()
+        val urlImageRover = apiResponse.photos.first().imgSrc
+        val urlRover = urlImageRover.replace("http","https")
+
+        Picasso.get()
+            .load(urlRover)
+            .resize(500,500)
+            .into(marsRoverFragment.imageViewRoverPhoto)
+
+        Toast.makeText(this, "Data Success", Toast.LENGTH_SHORT).show()
+    }
+
     private fun restoreFragments(){
         isApod=false
         isSolarSystem=false
+        isMarsRover= false
     }
 
 }

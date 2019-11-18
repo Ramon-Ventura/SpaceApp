@@ -2,13 +2,13 @@
     <string name="app_name">SpaceApp</string>
 
     <string name="image_view_apod">APOD_Image</string>
-    <string name="text_view_title">%1$d</string>
+    <string name="text_view_title">APOD(Astronomical Picture of the Day)\n%1$s</string>
     <string name="text_view_explanation">%1$d</string>
     <string name="text_view_date">%1$d</string>
     <string name="text_view_copy">%1$d</string>
 
 
-    <string name="edit_text_planet_name">Type Planet Name</string>
+    <string name="edit_text_planet_name">Type planet or body Name</string>
     <string name="btn_search_planet">Search</string>
     <string name="text_view_planet_name">%1$d</string>
 
@@ -25,6 +25,7 @@
     <string name="text_view_volume_exponent_value">%1$d</string>
 
 
+    <string name="edit_text_Rovers">Type date(YYYY-MM-DD)</string>
     <string name="text_view_density">Density</string>
     <string name="text_view_density_value">%1$.4f g.cm^3</string>
     <string name="text_view_gravity">Gravity</string>
@@ -38,5 +39,23 @@
     <string name="text_view_sidereal_rotation">Sidereal Rotation</string>
     <string name="text_view_sidereal_rotation_value">%1$.4f hours</string>
 
+
+    <string name="text_view_description">Search a Mars Rover \n image by Earth Date</string>
+    <string name = "text_view_earth_date">Earth Date</string>
+    <string name = "text_view_earth_date_value">%1$s</string>
+    <string name="text_view_camera_type">Camera Type</string>
+    <string name="text_view_camera_type_value">%1$s</string>
+    <string name="text_view_landing_date">Landing Date</string>
+    <string name="text_view_landing_date_value">%1$s</string>
+    <string name="text_view_launch_date">Launch Date</string>
+    <string name="text_view_launch_date_value">%1$s</string>
+    <string name="text_view_max_date">Max Date</string>
+    <string name="text_view_max_date_value">%1$s</string>
+    <string name="text_view_status">Status</string>
+    <string name="text_view_status_value">%1$s</string>
+    <string name="text_view_total_photos">Total Photos</string>
+    <string name="text_view_total_photos_value">%1$s</string>
+
+    <string name="image_view_Rover_Photo">Mars Rovers</string>
 
 </resources>
