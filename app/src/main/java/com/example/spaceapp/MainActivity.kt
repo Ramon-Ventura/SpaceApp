@@ -142,6 +142,8 @@ class MainActivity : AppCompatActivity() {
 
         Picasso.get()
             .load(urlImagen)
+            .placeholder(R.drawable.moon)
+            .error(R.drawable.moon)
             .resize(500,500)
             .into(apodFragment.imageViewApod)
 
